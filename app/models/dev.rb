@@ -12,20 +12,24 @@ class Dev < ActiveRecord::Base
         Self.freebie.update(dev: dev) unless freebie.dev != self
     end 
 
-    # def destroy_freebie(freebie)
-    #     self.freebie.each do |each_freebie| 
-    #     if each_freebie.id == freebie.id
-    #     end 
-    # end
 
+    def destroy_freebie_from_company(company)
 
-    # def remove_ratings(dish)
-    #     #user_inst = self
-    #     # .destroy
-    #     self.ratings.each do |each_rating|
-    #         if each_rating.dish_id == dish.id
-    #             each_rating.destroy
-    #     end
-    # end
+            self.freebies.each do |each_free|
+
+                if each_free.company_id == company.id
+
+                    each_free.destroy
+
+                else
+
+                    puts "Don't Destroy That One!"
+
+                end
+
+            end
+
+    end
+
 
 end
